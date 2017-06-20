@@ -46,7 +46,7 @@ FOR /F %%n IN (%FILE%) DO (
     )
     ECHO !I_VALUE!>>"!NEXT_FILE!"
 )
-REM    Add a new digit place.
+REM    
 IF !CARRY! EQU 1 (ECHO.0>>"!NEXT_FILE!")
 MOVE /Y "%NEXT_FILE%" "%FILE%" >NUL
 ENDLOCAL
@@ -84,7 +84,7 @@ REM   Import all the definitions.
 CALL "%CONFIG_TEMP%"
 EXIT /B
 
-REM Create a means to "add one" to a value.
+REM
 :WRITE_CONFIG
 SETLOCAL
 SET "FILE=%~1"
@@ -112,7 +112,7 @@ IF NOT "%STR%"=="" (
 
     SET /A NEXT_INDEX=INDEX+1
 
-    REM Recurse...
+    REM 
     SET MAX_INDEX=!INDEX!
     CALL :WRITE_CONFIG "!FILE!" "!STR:~1!" "!NEXT_INDEX!" "!FIRST!"
     IF !INDEX! GTR !MAX_INDEX! SET MAX_INDEX=!INDEX!
